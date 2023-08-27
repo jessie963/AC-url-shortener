@@ -1,0 +1,34 @@
+{{!-- 顯示短網址 --}}
+<div class="d-grid mt-5">
+  <div class="row mb-2">
+    <div class="col-10 d-grid mx-auto my-2">
+      <h4>Success! Please use this link:</h4>
+      <a href="{{shortenedURL}}" class="text-primary" id="shortened-url">{{shortenedURL}}</a>
+    </div>
+  </div>
+  <div class="row mb-2">
+    <div class="d-grid col-4 mx-auto">
+      <button class="btn btn-primary" id="copy-button">Copy</button>
+    </div>
+  </div>
+  <div class="row mb-2">
+    <div class="d-grid col-4 mx-auto">
+      <a href="/" class="btn btn-primary">Go Back</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  // 複製短網址
+  const copyURL = document.querySelector('#shortened-url').innerText;
+  const copyButton = document.querySelector('#copy-button');
+
+  copyButton.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(copyURL);
+      alert(`Copied: ${copyURL}`);
+    } catch (error) {
+      console.log(error);
+    }
+  })
+</script>
